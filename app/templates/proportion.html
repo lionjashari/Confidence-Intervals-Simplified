@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <center><h1>Hypothesis testing for population proportion</h1></center>
+    </div>
+    <div class="row">
+        <div class="col-3" id="parameterSetting">
+<!--            <form method="POST">-->
+                <!--Set parameters-->
+                <div class="container slider-container">
+                    <div class="row">
+                        <p class="hypothesis-slider-label">True proportion:</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="range" min="0.01" max="0.99" value="0.6" step="0.01" class="slider hypothesis-sld" id="trueProportion" name="trueProportion" oninput="changePopulationProportion()">
+                        </div>
+                        <div class="col-1 sliderLabelContainer">
+                            <div class="range-value" id="trueProportionV"></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="container slider-container">
+                    <div class="row">
+                        <p class="hypothesis-slider-label">Confidence level:</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="range" min="0.5" max="1" step="0.01" value="0.95" class="slider hypothesis-sld" id="confidenceLevel" name="confidenceLevel" oninput="changeConfidenceLevel()">
+                        </div>
+                        <div class="col-1 sliderLabelContainer">
+                            <div class="range-value" id="confidenceLevelV"></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="container slider-container">
+                    <div class="row">
+                        <p class="hypothesis-slider-label">Sample size:</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="range" min="10" max="500" value="50" step="10" class="slider hypothesis-sld" id="sampleSize" name="sampleSize" oninput="changeSampleSize()">
+                        </div>
+                        <div class="col-1 sliderLabelContainer">
+                            <div class="range-value" id="sampleSizeV"></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <!-- Draw samples -->
+                <button class="btn btn-outline-success my-2 my-sm-0 hypothesis-btn" type="submit" id="draw1">Draw 1 sample</button>
+                <br/>
+                <button class="btn btn-outline-success my-2 my-sm-0 hypothesis-btn" type="submit" id="draw20">Draw 20 samples</button>
+                <!--Reset-->
+                <br/>
+                <button class="btn btn-outline-danger my-2 my-sm-0 hypothesis-btn" type="submit" id="reset-graph">Reset</button>
+                <br/>
+                <p id="contain-parameter"></p>
+        </div>
+        <div class="col-9">
+            <div class="chart" id="hypothesis-chart"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{{ url_for('static', filename='js/population_proportion.js') }}"></script>
+{% endblock %}
