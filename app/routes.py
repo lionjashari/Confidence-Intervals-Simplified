@@ -27,3 +27,8 @@ def generate_proportion_confidence_interval(p_hat, sample_size, confidence_level
     se = math.sqrt((p_hat*(1 - p_hat))/sample_size)
     left, right = st.t.interval(alpha=confidence_level, df=sample_size - 1, loc=p_hat, scale=se)
     return jsonify({"left": left, "right": right})
+
+
+@app.route("/about")
+def proportion():
+    return render_template("about.html")
