@@ -7,7 +7,7 @@ from flask import render_template, redirect, url_for, jsonify
 
 @app.route("/home")
 @app.route("/")
-def ha():
+def home():
     return redirect(url_for("proportion"))
 
 
