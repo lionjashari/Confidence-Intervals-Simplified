@@ -32,4 +32,3 @@ def generate_proportion_confidence_interval(p_hat, sample_size, confidence_level
 @app.route("/about")
 def about():
     return render_template("about.html")
-# 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
