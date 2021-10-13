@@ -1,2 +1,5 @@
 # created by virtualenv automatically
 pyvenv.cfg
+Procfile
+venv
+.idea
